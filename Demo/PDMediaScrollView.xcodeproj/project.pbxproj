@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		493B0E5D15A122C20067F662 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493B0E5C15A122C20067F662 /* QuartzCore.framework */; };
+		4965E7A215A0849900B6D975 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4965E7A115A0849900B6D975 /* UIKit.framework */; };
+		4965E7A415A0849900B6D975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4965E7A315A0849900B6D975 /* Foundation.framework */; };
+		4965E7A615A0849900B6D975 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4965E7A515A0849900B6D975 /* CoreGraphics.framework */; };
+		4965E7AE15A0849900B6D975 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7AC15A0849900B6D975 /* InfoPlist.strings */; };
+		4965E7B015A0849900B6D975 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E7AF15A0849900B6D975 /* main.m */; };
+		4965E7B415A0849900B6D975 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E7B315A0849900B6D975 /* AppDelegate.m */; };
+		4965E7C315A0855200B6D975 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E7C215A0855200B6D975 /* DemoViewController.m */; };
+		4965E7E115A092EC00B6D975 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4965E7E015A092EC00B6D975 /* MediaPlayer.framework */; };
+		4965E7E815A0933300B6D975 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E7E315A0933300B6D975 /* UIImage+Alpha.m */; };
+		4965E7E915A0933300B6D975 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E7E515A0933300B6D975 /* UIImage+Resize.m */; };
+		4965E7EA15A0933300B6D975 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E7E715A0933300B6D975 /* UIImage+RoundedCorner.m */; };
+		4965E7F515A0C38E00B6D975 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7EF15A0C38E00B6D975 /* 0.jpg */; };
+		4965E7F615A0C38E00B6D975 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7F015A0C38E00B6D975 /* 1.jpg */; };
+		4965E7F715A0C38E00B6D975 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7F115A0C38E00B6D975 /* 2.jpg */; };
+		4965E7F815A0C38E00B6D975 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7F215A0C38E00B6D975 /* 4.jpg */; };
+		4965E7F915A0C38E00B6D975 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7F315A0C38E00B6D975 /* 5.jpg */; };
+		4965E7FC15A0D70900B6D975 /* btn_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4965E7FB15A0D70900B6D975 /* btn_play@2x.png */; };
+		4965E80A15A0EADB00B6D975 /* PDImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E80315A0EADB00B6D975 /* PDImageScrollView.m */; };
+		4965E80D15A0EADB00B6D975 /* PDMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E80915A0EADB00B6D975 /* PDMovieView.m */; };
+		4965E82615A1061F00B6D975 /* movie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4965E82515A1061F00B6D975 /* movie.mp4 */; };
+		4965E83115A1142B00B6D975 /* PDMediaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E82E15A1142900B6D975 /* PDMediaScrollView.m */; };
+		4965E83215A1142B00B6D975 /* PDMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4965E83015A1142B00B6D975 /* PDMediaViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		493B0E5C15A122C20067F662 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4965E79D15A0849900B6D975 /* PDMediaScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDMediaScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4965E7A115A0849900B6D975 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4965E7A315A0849900B6D975 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4965E7A515A0849900B6D975 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4965E7A715A0849900B6D975 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4965E7AB15A0849900B6D975 /* PDMediaScrollView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PDMediaScrollView-Info.plist"; sourceTree = "<group>"; };
+		4965E7AD15A0849900B6D975 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4965E7AF15A0849900B6D975 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4965E7B115A0849900B6D975 /* PDMediaScrollView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PDMediaScrollView-Prefix.pch"; sourceTree = "<group>"; };
+		4965E7B215A0849900B6D975 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4965E7B315A0849900B6D975 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4965E7C115A0855200B6D975 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoViewController.h; path = Demo/PDMediaScrollView/DemoViewController.h; sourceTree = SOURCE_ROOT; };
+		4965E7C215A0855200B6D975 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoViewController.m; path = Demo/PDMediaScrollView/DemoViewController.m; sourceTree = SOURCE_ROOT; };
+		4965E7E015A092EC00B6D975 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4965E7E215A0933300B6D975 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Alpha.h"; path = "../../Classes/UIImage Extensions/UIImage+Alpha.h"; sourceTree = "<group>"; };
+		4965E7E315A0933300B6D975 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Alpha.m"; path = "../../Classes/UIImage Extensions/UIImage+Alpha.m"; sourceTree = "<group>"; };
+		4965E7E415A0933300B6D975 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "../../Classes/UIImage Extensions/UIImage+Resize.h"; sourceTree = "<group>"; };
+		4965E7E515A0933300B6D975 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "../../Classes/UIImage Extensions/UIImage+Resize.m"; sourceTree = "<group>"; };
+		4965E7E615A0933300B6D975 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RoundedCorner.h"; path = "../../Classes/UIImage Extensions/UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		4965E7E715A0933300B6D975 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "../../Classes/UIImage Extensions/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		4965E7EF15A0C38E00B6D975 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = SOURCE_ROOT; };
+		4965E7F015A0C38E00B6D975 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = SOURCE_ROOT; };
+		4965E7F115A0C38E00B6D975 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = SOURCE_ROOT; };
+		4965E7F215A0C38E00B6D975 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = SOURCE_ROOT; };
+		4965E7F315A0C38E00B6D975 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = SOURCE_ROOT; };
+		4965E7FB15A0D70900B6D975 /* btn_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_play@2x.png"; path = "../../Classes/btn_play@2x.png"; sourceTree = "<group>"; };
+		4965E80215A0EADB00B6D975 /* PDImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDImageScrollView.h; path = ../../Classes/PDImageScrollView.h; sourceTree = "<group>"; };
+		4965E80315A0EADB00B6D975 /* PDImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDImageScrollView.m; path = ../../Classes/PDImageScrollView.m; sourceTree = "<group>"; };
+		4965E80815A0EADB00B6D975 /* PDMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMovieView.h; path = ../../Classes/PDMovieView.h; sourceTree = "<group>"; };
+		4965E80915A0EADB00B6D975 /* PDMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMovieView.m; path = ../../Classes/PDMovieView.m; sourceTree = "<group>"; };
+		4965E82515A1061F00B6D975 /* movie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = movie.mp4; sourceTree = SOURCE_ROOT; };
+		4965E82D15A1142900B6D975 /* PDMediaScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMediaScrollView.h; path = ../../Classes/PDMediaScrollView.h; sourceTree = "<group>"; };
+		4965E82E15A1142900B6D975 /* PDMediaScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMediaScrollView.m; path = ../../Classes/PDMediaScrollView.m; sourceTree = "<group>"; };
+		4965E82F15A1142A00B6D975 /* PDMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMediaViewController.h; path = ../../Classes/PDMediaViewController.h; sourceTree = "<group>"; };
+		4965E83015A1142B00B6D975 /* PDMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMediaViewController.m; path = ../../Classes/PDMediaViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4965E79A15A0849900B6D975 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493B0E5D15A122C20067F662 /* QuartzCore.framework in Frameworks */,
+				4965E7E115A092EC00B6D975 /* MediaPlayer.framework in Frameworks */,
+				4965E7A215A0849900B6D975 /* UIKit.framework in Frameworks */,
+				4965E7A415A0849900B6D975 /* Foundation.framework in Frameworks */,
+				4965E7A615A0849900B6D975 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4965E79215A0849900B6D975 = {
+			isa = PBXGroup;
+			children = (
+				4965E7D515A0889D00B6D975 /* PDMediaScrollView */,
+				4965E7A915A0849900B6D975 /* Demo */,
+				4965E7A015A0849900B6D975 /* Frameworks */,
+				4965E79E15A0849900B6D975 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4965E79E15A0849900B6D975 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4965E79D15A0849900B6D975 /* PDMediaScrollView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4965E7A015A0849900B6D975 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				493B0E5C15A122C20067F662 /* QuartzCore.framework */,
+				4965E7E015A092EC00B6D975 /* MediaPlayer.framework */,
+				4965E7A115A0849900B6D975 /* UIKit.framework */,
+				4965E7A315A0849900B6D975 /* Foundation.framework */,
+				4965E7A515A0849900B6D975 /* CoreGraphics.framework */,
+				4965E7A715A0849900B6D975 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4965E7A915A0849900B6D975 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				4965E7EF15A0C38E00B6D975 /* 0.jpg */,
+				4965E7F015A0C38E00B6D975 /* 1.jpg */,
+				4965E7F115A0C38E00B6D975 /* 2.jpg */,
+				4965E82515A1061F00B6D975 /* movie.mp4 */,
+				4965E7F215A0C38E00B6D975 /* 4.jpg */,
+				4965E7F315A0C38E00B6D975 /* 5.jpg */,
+				4965E7B215A0849900B6D975 /* AppDelegate.h */,
+				4965E7B315A0849900B6D975 /* AppDelegate.m */,
+				4965E7C115A0855200B6D975 /* DemoViewController.h */,
+				4965E7C215A0855200B6D975 /* DemoViewController.m */,
+				4965E7AA15A0849900B6D975 /* Supporting Files */,
+			);
+			name = Demo;
+			path = PDMediaScrollView;
+			sourceTree = "<group>";
+		};
+		4965E7AA15A0849900B6D975 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4965E7AB15A0849900B6D975 /* PDMediaScrollView-Info.plist */,
+				4965E7AC15A0849900B6D975 /* InfoPlist.strings */,
+				4965E7AF15A0849900B6D975 /* main.m */,
+				4965E7B115A0849900B6D975 /* PDMediaScrollView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4965E7D515A0889D00B6D975 /* PDMediaScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				4965E82F15A1142A00B6D975 /* PDMediaViewController.h */,
+				4965E83015A1142B00B6D975 /* PDMediaViewController.m */,
+				4965E82D15A1142900B6D975 /* PDMediaScrollView.h */,
+				4965E82E15A1142900B6D975 /* PDMediaScrollView.m */,
+				4965E80215A0EADB00B6D975 /* PDImageScrollView.h */,
+				4965E80315A0EADB00B6D975 /* PDImageScrollView.m */,
+				4965E80815A0EADB00B6D975 /* PDMovieView.h */,
+				4965E80915A0EADB00B6D975 /* PDMovieView.m */,
+				4965E7FB15A0D70900B6D975 /* btn_play@2x.png */,
+				4965E7D615A0920C00B6D975 /* UIImage Extensions */,
+			);
+			path = PDMediaScrollView;
+			sourceTree = "<group>";
+		};
+		4965E7D615A0920C00B6D975 /* UIImage Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4965E7E215A0933300B6D975 /* UIImage+Alpha.h */,
+				4965E7E315A0933300B6D975 /* UIImage+Alpha.m */,
+				4965E7E415A0933300B6D975 /* UIImage+Resize.h */,
+				4965E7E515A0933300B6D975 /* UIImage+Resize.m */,
+				4965E7E615A0933300B6D975 /* UIImage+RoundedCorner.h */,
+				4965E7E715A0933300B6D975 /* UIImage+RoundedCorner.m */,
+			);
+			name = "UIImage Extensions";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4965E79C15A0849900B6D975 /* PDMediaScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4965E7BA15A0849900B6D975 /* Build configuration list for PBXNativeTarget "PDMediaScrollView" */;
+			buildPhases = (
+				4965E79915A0849900B6D975 /* Sources */,
+				4965E79A15A0849900B6D975 /* Frameworks */,
+				4965E79B15A0849900B6D975 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PDMediaScrollView;
+			productName = PDMediaScrollView;
+			productReference = 4965E79D15A0849900B6D975 /* PDMediaScrollView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4965E79415A0849900B6D975 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 4965E79715A0849900B6D975 /* Build configuration list for PBXProject "PDMediaScrollView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4965E79215A0849900B6D975;
+			productRefGroup = 4965E79E15A0849900B6D975 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4965E79C15A0849900B6D975 /* PDMediaScrollView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4965E79B15A0849900B6D975 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4965E7AE15A0849900B6D975 /* InfoPlist.strings in Resources */,
+				4965E7F515A0C38E00B6D975 /* 0.jpg in Resources */,
+				4965E7F615A0C38E00B6D975 /* 1.jpg in Resources */,
+				4965E7F715A0C38E00B6D975 /* 2.jpg in Resources */,
+				4965E7F815A0C38E00B6D975 /* 4.jpg in Resources */,
+				4965E7F915A0C38E00B6D975 /* 5.jpg in Resources */,
+				4965E7FC15A0D70900B6D975 /* btn_play@2x.png in Resources */,
+				4965E82615A1061F00B6D975 /* movie.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4965E79915A0849900B6D975 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4965E7B015A0849900B6D975 /* main.m in Sources */,
+				4965E7B415A0849900B6D975 /* AppDelegate.m in Sources */,
+				4965E7C315A0855200B6D975 /* DemoViewController.m in Sources */,
+				4965E7E815A0933300B6D975 /* UIImage+Alpha.m in Sources */,
+				4965E7E915A0933300B6D975 /* UIImage+Resize.m in Sources */,
+				4965E7EA15A0933300B6D975 /* UIImage+RoundedCorner.m in Sources */,
+				4965E80A15A0EADB00B6D975 /* PDImageScrollView.m in Sources */,
+				4965E80D15A0EADB00B6D975 /* PDMovieView.m in Sources */,
+				4965E83115A1142B00B6D975 /* PDMediaScrollView.m in Sources */,
+				4965E83215A1142B00B6D975 /* PDMediaViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4965E7AC15A0849900B6D975 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4965E7AD15A0849900B6D975 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4965E7B815A0849900B6D975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4965E7B915A0849900B6D975 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4965E7BB15A0849900B6D975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PDMediaScrollView/PDMediaScrollView-Prefix.pch";
+				INFOPLIST_FILE = "PDMediaScrollView/PDMediaScrollView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4965E7BC15A0849900B6D975 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PDMediaScrollView/PDMediaScrollView-Prefix.pch";
+				INFOPLIST_FILE = "PDMediaScrollView/PDMediaScrollView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4965E79715A0849900B6D975 /* Build configuration list for PBXProject "PDMediaScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4965E7B815A0849900B6D975 /* Debug */,
+				4965E7B915A0849900B6D975 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4965E7BA15A0849900B6D975 /* Build configuration list for PBXNativeTarget "PDMediaScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4965E7BB15A0849900B6D975 /* Debug */,
+				4965E7BC15A0849900B6D975 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4965E79415A0849900B6D975 /* Project object */;
+}
