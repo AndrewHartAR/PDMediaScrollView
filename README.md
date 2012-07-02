@@ -5,11 +5,9 @@ Full screen multimedia gallery from Journalized. Similar to the full screen view
 
 http://ProjectDent.com/Journalized
 
-![](http://i.imgur.com/jINr7.jpg?1)
-![](http://i.imgur.com/6BqHx.jpg?1)
-![](http://i.imgur.com/hkZ3F.png?1)
-![](http://i.imgur.com/unHEv.jpg?1)
-![](http://i.imgur.com/9RtwY.jpg?1)
+![](http://f.cl.ly/items/2l2x3J3u0u0O3W0O2b0v/github1.png)
+![](http://f.cl.ly/items/2P1i0E0l462q2811273n/github2.png)
+![](http://f.cl.ly/items/2P071p1H0r0U3y241943/github3.png)
 
 Features:
 - Scroll through videos and images.
