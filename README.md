@@ -16,6 +16,46 @@ Features:
 - Threading support, to increase speed.
 - Auto resizing of images, as images larger than 1024 are slow and aren't designed to be used in a UIImage.
 - Play videos.
+- Landscape support
+- Automatic preview image generation for videos, if needed
+
+Instructions:
+
+1. Add the MediaPlayer and QuartzCore framework to your project.
+2. Import the PDMediaViewController file.
+3. Use this code to init:
+
+<code>
+    self.mediaVC = [[PDMediaViewController alloc] init];
+    self.mediaVC.mediaScrollView.mediaDelegate = self;
+    self.mediaVC.mediaScrollView.currentMediaItem = 0;
+    
+    self.mediaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:self.mediaVC animated:YES];
+</code>
+
+4. Respond to:
+
+-(int)numberOfMediaItemsInMediaScrollView:(PDMediaScrollView *)mediaScrollView;
+-(PDMediaType)mediaScrollView:(PDMediaScrollView *)mediaScrollView mediaTypeForMediaAtIndex:(int)index;
+-(void)mediaScrollView:(PDMediaScrollView *)mediaScrollView shouldReceiveMediaAtIndex:(int)index withFirstPriority:(BOOL)firstPriority;
+
+In response to FirstPriority, you should have something like this:
+
+<code>
+    if (index == 3) { //Movie
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];
+        NSURL *movieURL = [NSURL fileURLWithPath:path];
+        
+        [self.mediaVC.mediaScrollView addMovie:movieURL atIndex:3];
+    }
+    else { //Images
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%i.jpg", index]];
+        [self.mediaVC.mediaScrollView addImage:image atIndex:index];
+    }
+</code>
+    
+In other words, find out what type of media is needed, and add it at the index it asked for. If firstPriority is NO, it means the app isn't looking at that view yet, and you can run the code in the background, if you wish to.
 
 Notes:
 
