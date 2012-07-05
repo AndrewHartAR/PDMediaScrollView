@@ -15,11 +15,15 @@
     
     BOOL _frameIsChanging;
     
+    NSMutableDictionary *_mediaViews;
+    
 }
 
 @property (nonatomic) int numberOfMediaItems;
 
 @property (nonatomic) BOOL frameIsChanging;
+
+@property (nonatomic, strong) NSMutableDictionary *mediaViews;
 
 @end
 
@@ -39,6 +43,8 @@
 
 @synthesize fullScreenDelegate = _fullScreenDelegate;
 
+@synthesize mediaViews = _mediaViews;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -52,6 +58,8 @@
         self.delegate = self;
         
         self.mediaCache = [[NSCache alloc] init];
+        
+        self.mediaViews = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -64,50 +72,55 @@
 
 #pragma mark - Private methods
 
--(void)resetMediaAtIndex:(int)index {
-    //responsible for correcting the frame, the media size, stopping the video and creating it if it doesn't already exist
-    if ([self.mediaCache objectForKey:[NSNumber numberWithInt:index]] == nil) {
-        NSLog(@"Test");
-        [self createMediaItemAtIndex:index];
-    }
-    UIView *view = [self.mediaCache objectForKey:[NSNumber numberWithInt:index]];
-    view.frame = [self frameForMediaAtIndex:index];
-    
-    if ([self.mediaDelegate mediaScrollView:self mediaTypeForMediaAtIndex:index] == PDMediaTypeImage) {
-        PDImageScrollView *image = [self.mediaCache objectForKey:[NSNumber numberWithInt:index]];
-        [image resetImageScale];
-    }
-    else if ([self.mediaDelegate mediaScrollView:self mediaTypeForMediaAtIndex:index] == PDMediaTypeMovie) {
-        //Reset
-    }
-}
-
 -(void)setupContentSize {
     self.contentSize = CGSizeMake(self.numberOfMediaItems * self.frame.size.width, self.frame.size.height);
 }
 
 -(void)retrieveMediaAtIndex:(int)index withFirstPriority:(BOOL)firstPriority {
-    if ([self.mediaCache objectForKey:[NSNumber numberWithInt:index]] == nil) {
-        if ([self.mediaDelegate respondsToSelector:@selector(mediaScrollView:shouldReceiveMediaAtIndex:withFirstPriority:)]) {
-            [self.mediaDelegate mediaScrollView:self shouldReceiveMediaAtIndex:index withFirstPriority:firstPriority];
+    
+    if ([self.mediaCache objectForKey:[NSNumber numberWithInt:index]]) {
+        if ([self.mediaDelegate mediaScrollView:self mediaTypeForMediaAtIndex:index] == PDMediaTypeImage) {
+            [self addImage:[self.mediaCache objectForKey:[NSNumber numberWithInt:index]] atIndex:index];
+        }
+        else {
+            [self addMovie:[self.mediaCache objectForKey:[NSNumber numberWithInt:index]] atIndex:index];
         }
     }
-    else {
-        [self resetMediaAtIndex:index];
+    if ([self.mediaDelegate respondsToSelector:@selector(mediaScrollView:shouldReceiveMediaAtIndex:withFirstPriority:)]) {
+        [self.mediaDelegate mediaScrollView:self shouldReceiveMediaAtIndex:index withFirstPriority:firstPriority];
     }
 }
 
 -(void)setupViewForViewingMediaAtIndex:(int)index {
+    
     self.contentOffset = CGPointMake(self.frame.size.width * index, 0);
     
     [self retrieveMediaAtIndex:index withFirstPriority:YES];
-    if (index != 0) {
+    
+    if ([self.mediaViews objectForKey:[NSNumber numberWithInt:index - 3]]) {
+        [((UIView *)[self.mediaViews objectForKey:[NSNumber numberWithInt:index - 3]]) removeFromSuperview];
+        [self.mediaViews removeObjectForKey:[NSNumber numberWithInt:index - 3]];
+    }
+    if ([self.mediaViews objectForKey:[NSNumber numberWithInt:index + 3]]) {
+        [((UIView *)[self.mediaViews objectForKey:[NSNumber numberWithInt:index + 3]]) removeFromSuperview];
+        [self.mediaViews removeObjectForKey:[NSNumber numberWithInt:index + 3]];
+    }
+    
+    if (index > 0) {
         [self retrieveMediaAtIndex:index - 1 withFirstPriority:NO];
     }
     
+    if (index > 1) {
+        [self retrieveMediaAtIndex:index - 2 withFirstPriority:NO];
+    }
     if (self.numberOfMediaItems > index + 1) {
         [self retrieveMediaAtIndex:index + 1 withFirstPriority:NO];
     }
+    if (self.numberOfMediaItems > index + 2) {
+        [self retrieveMediaAtIndex:index + 2 withFirstPriority:NO];
+    }
+    
+    
 }
 
 -(CGRect)frameForMediaAtIndex:(int)index {
@@ -119,21 +132,25 @@
 
 -(void)addImage:(UIImage *)image atIndex:(int)index  {
     
-    if ([self.mediaCache objectForKey:[NSNumber numberWithInt:index]] != nil) {
-        [[self.mediaCache objectForKey:[NSNumber numberWithInt:index]] removeFromSuperview];
-        [self.mediaCache removeObjectForKey:[NSNumber numberWithInt:index]];
+    if ([self.mediaViews objectForKey:[NSNumber numberWithInt:index]]) {
+            PDImageScrollView *imageScrollView = [self.mediaViews objectForKey:[NSNumber numberWithInt:index]];
+            [imageScrollView resetImageScale];
+    }
+    else {
+        CGRect frame = [self frameForMediaAtIndex:index];
+        
+        PDImageScrollView *imageScrollView = [[PDImageScrollView alloc] initWithFrame:frame];
+        imageScrollView.touchDelegate = self;
+        
+        [imageScrollView setImage:image];
+        
+        [self.mediaCache setObject:image forKey:[NSNumber numberWithInt:index]];
+        
+        [self.mediaViews setObject:imageScrollView forKey:[NSNumber numberWithInt:index]];
+        
+        [self addSubview:imageScrollView];
     }
     
-    CGRect frame = [self frameForMediaAtIndex:index];
-    
-    PDImageScrollView *imageScrollView = [[PDImageScrollView alloc] initWithFrame:frame];
-    imageScrollView.touchDelegate = self;
-    
-    [imageScrollView setImage:image];
-    
-    [self addSubview:imageScrollView];
-    
-    [self.mediaCache setObject:imageScrollView forKey:[NSNumber numberWithInt:index]];
 }
 
 -(void)addMovie:(NSURL *)movie atIndex:(int)index {
@@ -144,27 +161,24 @@
 
 -(void)addMovie:(NSURL *)movie atIndex:(int)index withPreviewImage:(UIImage *)image {
     
-    if ([self.mediaCache objectForKey:[NSNumber numberWithInt:index]] != nil) {
-        [[self.mediaCache objectForKey:[NSNumber numberWithInt:index]] removeFromSuperview];
-        [self.mediaCache removeObjectForKey:[NSNumber numberWithInt:index]];
+    if(![self.mediaViews objectForKey:[NSNumber numberWithInt:index]]) {
+        CGRect frame = [self frameForMediaAtIndex:index];
+        
+        PDMovieView *movieView = [[PDMovieView alloc] initWithFrame:frame];
+        movieView.delegate = self;
+        
+        movieView.imageView.image = image;
+        
+        [movieView setMovieURL:movie];
+        
+        [self.mediaCache setObject:movie forKey:[NSNumber numberWithInt:index]];
+        
+        [self.mediaViews setObject:movieView forKey:[NSNumber numberWithInt:index]];
+        
+        [self addSubview:movieView];
+        
     }
-    
-    CGRect frame = [self frameForMediaAtIndex:index];
-    
-    PDMovieView *movieView = [[PDMovieView alloc] initWithFrame:frame];
-    movieView.delegate = self;
-    
-    movieView.imageView.image = image;
-    
-    [movieView setMovieURL:movie];
-    
-    [self addSubview:movieView];
-    [self.mediaCache setObject:movieView forKey:[NSNumber numberWithInt:index]];
-}
 
--(void)createMediaItemAtIndex:(int)index {
-    
-    
 }
 
 -(void)frameIsChangingToNo {
@@ -191,6 +205,22 @@
     
     [super setFrame:frame];
     
+    [self setupContentSize];
+    
+    self.contentOffset = CGPointMake(self.frame.size.width * self.currentMediaItem, 0);
+    
+    int i = 0;
+    
+    while (i < [self.mediaDelegate numberOfMediaItemsInMediaScrollView:self]) {
+        
+        if ([self.mediaViews objectForKey:[NSNumber numberWithInt:i]]) {
+            UIView *view = [self.mediaViews objectForKey:[NSNumber numberWithInt:i]];
+            view.frame = [self frameForMediaAtIndex:i];
+        }
+        i++;
+    }
+    
+    /*
     self.frameIsChanging = YES;
     
     [self setupContentSize];
@@ -207,7 +237,7 @@
         
         i++;
     }
-    
+    */
     
 }
 
@@ -266,7 +296,7 @@
 #pragma mark - JMovieViewTouchDelegate methods
 
 -(void)didTapMovieView:(PDMovieView *)movieView {
-    if ([self.delegate respondsToSelector:@selector(didTouchUpInImageScrollView)]) {
+    if ([self.touchDelegate respondsToSelector:@selector(didTouchUpInMediaScrollView:)]) {
         [self.touchDelegate didTouchUpInMediaScrollView:self];
     }
 }

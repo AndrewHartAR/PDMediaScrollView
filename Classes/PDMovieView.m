@@ -104,8 +104,8 @@
         
         NSString *pathForFile = [movieURL path];
         
-        if ([fileManager fileExistsAtPath:pathForFile]){ 
-            NSLog(@"exists");
+        if (![fileManager fileExistsAtPath:pathForFile]){ 
+            NSLog(@"movie file doesn't exist");
         }
         
         dispatch_queue_t queue = dispatch_queue_create("add_placeholder_image", NULL);

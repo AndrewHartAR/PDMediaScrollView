@@ -12,7 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "PDMediaViewController.h"
 
-@interface DemoViewController () <PDMediaScrollViewDelegate> {
+@interface DemoViewController () <PDMediaScrollViewDelegate, PDMediaViewControllerDelegate> {
     PDMediaViewController* _mediaVC;
 }
 
@@ -28,22 +28,20 @@
 {
     self = [super init];
     if (self) {
-        /*
-        PDImageScrollView *imageScrollView = [[PDImageScrollView alloc] initWithFrame:self.view.bounds];
+        
+        
+        /*PDImageScrollView *imageScrollView = [[PDImageScrollView alloc] initWithFrame:self.view.bounds];
         [imageScrollView setImage:[UIImage imageNamed:@"0.jpg"]];
         [self.view addSubview:imageScrollView];*/
         /*
-        PDMovieView *movieView = [[PDMovieView alloc] initWithFrame:self.view.bounds];
-        movieView.delegate = self;
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];
-        NSURL *movieURL = [NSURL fileURLWithPath:path];
-        
-        movieView.movieURL = movieURL;
-        [self.view addSubview:movieView];*/
-        
-        
-        
+         PDMovieView *movieView = [[PDMovieView alloc] initWithFrame:self.view.bounds];
+         movieView.delegate = self;
+         
+         NSString *path = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];
+         NSURL *movieURL = [NSURL fileURLWithPath:path];
+         
+         movieView.movieURL = movieURL;
+         [self.view addSubview:movieView];*/
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:@"Tap me" forState:UIControlStateNormal];
@@ -60,12 +58,23 @@
 
     
     self.mediaVC = [[PDMediaViewController alloc] init];
+    self.mediaVC.interactionDelegate = self; //Not required.
     self.mediaVC.mediaScrollView.mediaDelegate = self;
     self.mediaVC.mediaScrollView.currentMediaItem = 0;
     
     self.mediaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:self.mediaVC animated:YES];
     
+}
+
+#pragma mark - PDMediaViewControllerDelegate methods
+
+-(void)mediaViewController:(PDMediaViewController *)mediaViewController didChangeToEntryAtIndex:(int)index {
+    NSLog(@"At index: %i", index);
+}
+
+-(void)mediaViewController:(PDMediaViewController *)mediaViewController navigationBarDidChangeVisibilityToHidden:(BOOL)hidden {
+    NSLog(@"navigation bar changed to hidden: %i", hidden);
 }
 
 #pragma mark - PDMediaScrollViewDelegate methods
@@ -85,7 +94,6 @@
 }
 
 -(UIImage *)mediaScrollView:(PDMediaScrollView *)mediaScrollView imageAtIndex:(int)index {
-    NSLog(@"it wants an image");
     return [UIImage imageNamed:[NSString stringWithFormat:@"%i.jpg", index]];
 }
 
@@ -108,7 +116,6 @@
         [self.mediaVC.mediaScrollView addImage:image atIndex:index];
     }
 }
-
 
 
 

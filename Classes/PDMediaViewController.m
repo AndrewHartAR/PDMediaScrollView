@@ -17,22 +17,23 @@
     
     BOOL _isVisible;
     
-    UINavigationBar *_navigationBar;
-    
     BOOL _keepNavigationBar;
+    
+    UIDeviceOrientation _orientationWhenGoingFullScreen;
     
 }
 
 @property (nonatomic) BOOL statusBarHiddenInitially;
+
 @property (nonatomic) UIStatusBarStyle statusBarStyleInitially;
 
 @property (nonatomic) BOOL touchUpOccurred;
 
 @property (nonatomic) BOOL isVisible;
 
-@property (nonatomic, strong) UINavigationBar *navigationBar;
-
 @property (nonatomic) BOOL keepNavigationBar;
+
+@property (nonatomic) UIDeviceOrientation orientationWhenGoingFullScreen;
 
 @end
 
@@ -53,6 +54,8 @@
 @synthesize navigationBar = _navigationBar;
 
 @synthesize keepNavigationBar = _keepNavigationBar;
+
+@synthesize orientationWhenGoingFullScreen = _orientationWhenGoingFullScreen;
 
 - (id)init
 {
@@ -128,12 +131,16 @@
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     
+    return YES;
+    
+    /*
     if (self.isVisible == YES) {
         return YES;
     }
     else {
         return NO;
-    }
+    }*/
+
 }
 
 
@@ -153,6 +160,10 @@
                      animations:^{
                          self.navigationBar.alpha = 0;
                      }completion:nil];
+    
+    if ([self.interactionDelegate respondsToSelector:@selector(mediaViewController:navigationBarDidChangeVisibilityToHidden:)]) {
+        [self.interactionDelegate mediaViewController:self navigationBarDidChangeVisibilityToHidden:YES];
+    }
 }
 
 -(void)showNavigationBar {
@@ -164,6 +175,10 @@
                      animations:^{
                          self.navigationBar.alpha = 1.0;
                      }completion:nil];
+    
+    if ([self.interactionDelegate respondsToSelector:@selector(mediaViewController:navigationBarDidChangeVisibilityToHidden:)]) {
+        [self.interactionDelegate mediaViewController:self navigationBarDidChangeVisibilityToHidden:NO];
+    }
 }
 
 -(void)done {
@@ -208,6 +223,8 @@
 
 -(void)mediaScrollView:(PDMediaScrollView *)mediaScrollView playMovieFullScreenWithURL:(NSURL *)movieURL {
     
+    self.orientationWhenGoingFullScreen = [UIDevice currentDevice].orientation;
+    
     MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
     
     [[NSNotificationCenter defaultCenter] removeObserver:moviePlayerController
@@ -248,6 +265,10 @@
         [self dismissModalViewControllerAnimated:YES];
         
         self.isVisible = YES;
+        
+        if (self.orientationWhenGoingFullScreen != [UIDevice currentDevice].orientation) {
+            self.mediaScrollView.frame = self.view.bounds;
+        }
     }
 }
 

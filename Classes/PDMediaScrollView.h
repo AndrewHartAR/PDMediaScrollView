@@ -16,12 +16,10 @@ typedef enum {
 
 @protocol PDMediaScrollViewDelegate <NSObject>
 
--(int)numberOfMediaItemsInMediaScrollView:(PDMediaScrollView *)mediaScrollView;;
+-(int)numberOfMediaItemsInMediaScrollView:(PDMediaScrollView *)mediaScrollView;
 
 @optional
 -(PDMediaType)mediaScrollView:(PDMediaScrollView *)mediaScrollView mediaTypeForMediaAtIndex:(int)index;
--(UIImage *)mediaScrollView:(PDMediaScrollView *)mediaScrollView imageAtIndex:(int)index;
--(NSURL *)mediaScrollView:(PDMediaScrollView *)mediaScrollView movieAtIndex:(int)index;
 
 -(void)mediaScrollView:(PDMediaScrollView *)mediaScrollView shouldReceiveMediaAtIndex:(int)index withFirstPriority:(BOOL)firstPriority;
 
