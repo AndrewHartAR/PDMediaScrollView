@@ -75,7 +75,15 @@
                                                                   target:self
                                                                   action:@selector(done)];
         
-        self.navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+		if([[[UIDevice currentDevice] systemVersion] intValue] >= 7)
+		{
+			self.navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
+		}
+		else
+		{
+			self.navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+		}
+		
         UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"0 of 0"];
         self.navigationBar.items = [NSArray arrayWithObject:navItem];
         self.navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
